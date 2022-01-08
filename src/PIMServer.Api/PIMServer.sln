@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMServer.Api", "PIMServer.Api.csproj", "{F72C9F7A-3D18-4106-9B01-29F300B86CCD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B0FD18B3-F51C-4B1E-B81C-FE8DB0C32F26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMServer.Core", "..\PIMServer.Core\PIMServer.Core.csproj", "{7052AB78-3BE5-4298-8263-B0451C192763}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMServer.Infrastructure", "..\PIMServer.Infrastructure\PIMServer.Infrastructure.csproj", "{22F8A70F-D0BC-4B65-B1EF-412410B771AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F72C9F7A-3D18-4106-9B01-29F300B86CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F72C9F7A-3D18-4106-9B01-29F300B86CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F72C9F7A-3D18-4106-9B01-29F300B86CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F72C9F7A-3D18-4106-9B01-29F300B86CCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7052AB78-3BE5-4298-8263-B0451C192763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7052AB78-3BE5-4298-8263-B0451C192763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7052AB78-3BE5-4298-8263-B0451C192763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7052AB78-3BE5-4298-8263-B0451C192763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22F8A70F-D0BC-4B65-B1EF-412410B771AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F8A70F-D0BC-4B65-B1EF-412410B771AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22F8A70F-D0BC-4B65-B1EF-412410B771AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22F8A70F-D0BC-4B65-B1EF-412410B771AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F72C9F7A-3D18-4106-9B01-29F300B86CCD} = {B0FD18B3-F51C-4B1E-B81C-FE8DB0C32F26}
+		{7052AB78-3BE5-4298-8263-B0451C192763} = {B0FD18B3-F51C-4B1E-B81C-FE8DB0C32F26}
+		{22F8A70F-D0BC-4B65-B1EF-412410B771AE} = {B0FD18B3-F51C-4B1E-B81C-FE8DB0C32F26}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4534873E-4095-425D-9650-3EAB81C5BEAE}
+	EndGlobalSection
+EndGlobal
