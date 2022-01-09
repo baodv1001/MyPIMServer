@@ -24,7 +24,6 @@ namespace AttributeService.Api
 
             var appSettings = configuration.GetSection("AppSettings").Get<AppSettings>();
 
-            string productDbConnectionString = string.Empty;
             string attributeDbConnectionString = string.Empty;
             attributeDbConnectionString = configuration.GetConnectionString("Attribute");
 
@@ -35,6 +34,8 @@ namespace AttributeService.Api
                 optionsLifetime: ServiceLifetime.Transient);
 
             services.AddScoped<IAttributeService, Core.Services.AttributeService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IAttributeRepository, AttributeRepository>();
             services.AddHttpClient();
             return services;

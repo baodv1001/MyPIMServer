@@ -7,96 +7,96 @@ namespace AttributeService.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AttributeController : ControllerBase
+    public class CategoryController : ControllerBase
     {
-        private readonly IAttributeService _attributeService;
-        public AttributeController(IAttributeService AttributeService)
+        private readonly ICategoryService _categoryService;
+        public CategoryController(ICategoryService CategoryService)
         {
-            _attributeService = AttributeService ?? throw new ArgumentNullException(nameof(AttributeService));
+            _categoryService = CategoryService ?? throw new ArgumentNullException(nameof(CategoryService));
         }
 
-        // Get All Attributes
-        // Return List Attributes
-        // Table used: Attributes
+        // Get All Categorys
+        // Return List Categorys
+        // Table used: Categorys
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<IEnumerable<Core.Models.Attribute>>> GetAttributes()
+        public async Task<ActionResult<IEnumerable<Core.Models.Category>>> GetCategories()
         {
-            var response = await _attributeService.GetAllAttributes().ConfigureAwait(false);
+            var response = await _categoryService.GetAllCategories().ConfigureAwait(false);
             return response == null ? NoContent() : Ok(response);
         }
 
-        // Get an Attribute by Id
-        // Return an Attribute
-        // Table used: Attributes
-        [HttpGet("{id}", Name = "GetAttributeById")]
+        // Get an Category by Id
+        // Return an Category
+        // Table used: Categorys
+        [HttpGet("{id}", Name = "GetCategoryById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<Core.Models.Attribute>> GetAttributeById(Guid id)
+        public async Task<ActionResult<Core.Models.Category>> GetCategoryById(Guid id)
         {
             if (id == null)
             {
                 return BadRequest();
             }
-            var response = await _attributeService.GetAttributeById(id).ConfigureAwait(false);
+            var response = await _categoryService.GetCategoryById(id).ConfigureAwait(false);
             return response == null ? NoContent() : Ok(response);
         }
 
-        // Create Attribute
-        // Return an Attribute created
-        // Table used: Attributes
+        // Create Category
+        // Return an Category created
+        // Table used: Categorys
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<Core.Models.Attribute>> CreateAttribute(Core.Models.Attribute attribute)
+        public async Task<ActionResult<Core.Models.Category>> CreateCategory(Core.Models.Category category)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            var response = await _attributeService.CreateAttribute(attribute).ConfigureAwait(false);
+            var response = await _categoryService.CreateCategory(category).ConfigureAwait(false);
 
-            return CreatedAtRoute(nameof(GetAttributeById), new { id = response.Id }, response);
+            return CreatedAtRoute(nameof(GetCategoryById), new { id = response.Id }, response);
         }
 
-        // Delete Attribute
+        // Delete Category
         // Return true/false
-        // Table used: Attributes
+        // Table used: Categorys
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<bool>> DeleteAttribute(Guid id)
+        public async Task<ActionResult<bool>> DeleteCategory(Guid id)
         {
             if (id == null)
             {
                 return BadRequest();
             }
-            return await _attributeService.DeleteAttribute(id).ConfigureAwait(false);
+            return await _categoryService.DeleteCategory(id).ConfigureAwait(false);
         }
 
-        // Delete Attribute
+        // Delete Category
         // Return true/false
-        // Table used: Attributes
+        // Table used: Categorys
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<object>> UpdateAttribute(Core.Models.Attribute attribute, Guid id)
+        public async Task<ActionResult<object>> UpdateCategory(Core.Models.Category category, Guid id)
         {
             if (!ModelState.IsValid)
             {
@@ -106,7 +106,7 @@ namespace AttributeService.Api.Controllers
             {
                 return BadRequest();
             }
-            var response = await _attributeService.UpdateAttribute(attribute, id).ConfigureAwait(false);
+            var response = await _categoryService.UpdateCategory(category, id).ConfigureAwait(false);
 
             return response == null ? NoContent() : Ok(response);
         }
