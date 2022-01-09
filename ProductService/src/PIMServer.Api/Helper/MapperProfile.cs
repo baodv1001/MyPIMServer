@@ -7,6 +7,7 @@ namespace PIMServer.Api.Helper
         public MapperProfile()
         {
             CreateMap<Infrastructure.Entities.Product, Core.Models.Product>().ReverseMap();
+            CreateMap<Infrastructure.Entities.Language, Core.Models.Language>().ReverseMap();
         }
     }
 }

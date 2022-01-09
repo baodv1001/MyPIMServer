@@ -14,5 +14,7 @@ namespace PIMServer.Infrastructure.Context
         {
         }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Language> Languages { get; set; }
+        public virtual DbSet<Product_Translation> Translations { get; set; }
     }
 }

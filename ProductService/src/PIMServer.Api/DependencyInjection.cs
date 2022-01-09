@@ -25,8 +25,10 @@ namespace PIMServer.Api
             var appSettings = configuration.GetSection("AppSettings").Get<AppSettings>();
 
             string productDbConnectionString = string.Empty;
+            string storeProductDbConnectionString = string.Empty;
             string attributeDbConnectionString = string.Empty;
             productDbConnectionString = configuration.GetConnectionString("Product");
+            storeProductDbConnectionString = configuration.GetConnectionString("StoreProduct");
             attributeDbConnectionString = configuration.GetConnectionString("Attribute");
 
             //
