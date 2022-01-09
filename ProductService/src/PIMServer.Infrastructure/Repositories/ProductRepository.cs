@@ -20,7 +20,7 @@ namespace PIMServer.Infrastructure.Repositories
             var dbProduct = _mapper.Map<Entities.Product>(product);
             await _dbContext.Products.AddAsync(dbProduct);
             await _dbContext.SaveChangesAsync();
-            return product;
+            return _mapper.Map<Product>(dbProduct);
         }
 
         public async Task<bool> DeleteProduct(Guid id)

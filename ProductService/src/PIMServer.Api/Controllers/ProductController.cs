@@ -64,7 +64,6 @@ namespace PIMServer.Api.Controllers
             {
                 return BadRequest();
             }
-
             var response = await _productService.CreateProduct(product).ConfigureAwait(false);
 
             return CreatedAtRoute(nameof(GetProductById), new { id = response.Id }, response);

@@ -14,6 +14,5 @@ namespace PIMServer.Infrastructure.Context
         {
         }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Attribute_Product> Attribute_Products { get; set; }
     }
 }
