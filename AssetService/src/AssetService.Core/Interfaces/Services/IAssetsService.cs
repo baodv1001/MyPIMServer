@@ -10,8 +10,8 @@ namespace AssetsService.Core.Interfaces.Services
     public interface IAssetsService
     {
         Task<IEnumerable<Assets>> GetAllAssets();
-        Task<Assets> GetAssetById(Guid id);
-        Task<Assets> CreateAsset(Assets asset);
+        Task<Assets> GetAssetByUrl(string url);
+        Task<string> CreateAsset(Assets asset);
         Task<object> UpdateAsset(Assets asset, Guid id);
         Task<bool> DeleteAsset(Guid id);
     }

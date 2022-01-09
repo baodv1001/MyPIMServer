@@ -18,7 +18,7 @@ namespace AssetsService.Core.Services
             _assetsRepository = assetsRepository ?? throw new ArgumentNullException(nameof(assetsRepository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
-        public async Task<Models.Assets> CreateAsset(Models.Assets assets)
+        public async Task<string> CreateAsset(Models.Assets assets)
         {
             try
             {
@@ -63,16 +63,16 @@ namespace AssetsService.Core.Services
             }
         }
 
-        public async Task<Models.Assets> GetAssetById(Guid id)
+        public async Task<Assets> GetAssetByUrl(string url);
         {
             try
             {
-                return await _assetsRepository.GetAssetById(id);
+                return await _assetsRepository.GetAssetByUrl(url);
 
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error while trying to call Get Assets By Id in service class, Error Message = {ex}.");
+                _logger.LogError($"Error while trying to call Get Assets By url in service class, Error Message = {ex}.");
                 throw;
             }
         }

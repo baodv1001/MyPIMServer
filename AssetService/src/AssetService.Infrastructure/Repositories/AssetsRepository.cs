@@ -15,12 +15,12 @@ namespace AssetsService.Infrastructure.Repositories
     {
         private readonly AssetsDbContext _dbContext;
         private readonly IMapper _mapper;
-        public async Task<Core.Models.Assets> CreateAsset(Core.Models.Assets asset)
+        public async Task<string> CreateAsset(Core.Models.Assets asset)
         {
             var dbAsset = _mapper.Map<Assets>(asset);
             await _dbContext.Assets.AddAsync(dbAsset);
             await _dbContext.SaveChangesAsync();
-            return _mapper.Map<Core.Models.Assets>(dbAsset);
+            return _mapper.Map<Core.Models.Assets>(dbAsset).Url;
         }
 
         public async Task<bool> DeleteAsset(Guid id)
@@ -47,12 +47,12 @@ namespace AssetsService.Infrastructure.Repositories
             return null;
         }
 
-        public async Task<Core.Models.Assets> GetAssetById(Guid id)
+        public async Task<Byte[]> GetAssetByUrl(string url)
         {
-            var asset = await _dbContext.Assets.FindAsync(id);
+            var asset = await _dbContext.Assets.FindAsync(url);
             if (asset != null)
             {
-                return _mapper.Map<Core.Models.Assets>(asset);
+                return _mapper.Map<Core.Models.Assets>(asset).Data;
             }
             return null;
         }

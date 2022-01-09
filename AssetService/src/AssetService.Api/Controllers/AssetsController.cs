@@ -30,22 +30,22 @@ namespace AssetsService.Api.Controllers
             return response == null ? NoContent() : Ok(response);
         }
 
-        // Get an Asset by Id
+        // Get an Asset by url
         // Return an Asset
         // Table used: Assets
-        [HttpGet("{id}", Name = "GetAssetById")]
+        [HttpGet("{url}", Name = "GetAssetByUrl")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<Assets>> GetAssetById(Guid id)
+        public async Task<ActionResult<byte[]>> GetAssetByUrl (string url)
         {
             if (id == null)
             {
                 return BadRequest();
             }
-            var response = await _assetService.GetAssetById(id).ConfigureAwait(false);
+            var response = await _assetService.GetAssetByUrl(url).ConfigureAwait(false);
             return response == null ? NoContent() : Ok(response);
         }
 
@@ -58,15 +58,27 @@ namespace AssetsService.Api.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<Assets>> CreateAsset(Assets Asset)
+        public Byte[] ConvertFileToBytes(File file)
+        {
+            Byte[] asset = new Byte[]();
+            //handle conver at here
+
+            return asset;
+        }
+
+        public async Task<ActionResult<string>> CreateAsset(File file)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            var response = await _assetService.CreateAsset(Asset).ConfigureAwait(false);
+            Assets asset = new Assets();
+            asset.Data = ConvertFileToBytes(file);
+            // Generate URL
+            //Code here
+            var response = await _assetService.CreateAsset(asset).ConfigureAwait(false);
 
-            return CreatedAtRoute(nameof(GetAssetById), new { id = response.Id }, response);
+            return response;
         }
 
         // Delete Asset

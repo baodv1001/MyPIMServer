@@ -19,12 +19,43 @@ namespace ImportService.Infrastructure.Repositories
 
         public async Task<bool> Import(Core.Models.ImportFile importFile)
         {
+            List<object> objs = new List<object>();
             // modified here to handle import 
+            
             var dbImportFile = _mapper.Map<Entities.ImportFile>(importFile);
-            if (importFile.ObjectImported == "Product")
-            {
-                _dbContext.Products.Add(new Product());
-            }    
+            for (int i = 0; i < objs; i++)
+			{
+                switch(importFile.ObjectImported == 'Product')
+                {
+                    case 'Product':
+                        Product product = new Product();
+                        //convert objs[i] => product at here
+                        _dbContext.Products.Add(product);
+                        break;
+                    case 'Attribute':
+                        Attribute attribute = new Attribute();
+                        //convert objs[i] => attribute at here
+                        _dbContext.Attributes.Add(new Attribute());
+                        break;
+                    case 'Category':
+                        Category category = new Category();
+                         //convert objs[i] => category at here
+                        _dbContext.Categorys.Add(category);
+                        break;
+                    case 'Channel':
+                        Channel channel = new Channel();
+                         //convert objs[i] => channel at here
+                        _dbContext.Channels.Add(channel);
+                        break;
+                    case 'Supplier':
+                        Suppiler suppiler = new Suppiler();
+                         //convert objs[i] => suppiler at here
+                        _dbContext.Suppliers.Add(suppiler);
+                        break;
+                    default:
+                        break;
+                }   
+			}
             await _dbContext.SaveChangesAsync();
             return true;
         }
