@@ -14,12 +14,16 @@ namespace PIMServer.Infrastructure.Repositories
     public class ProductRepository : IProductRepository
     {
         private readonly ProductDbContext _dbContext;
+        private readonly StoreProductDbContext _storeDbContext;
         private readonly IMapper _mapper;
         public async Task<Product> CreateProduct(Product product)
         {
             var dbProduct = _mapper.Map<Entities.Product>(product);
+            var storeDbProduct = _mapper.Map<Entities.StoreProduct>(product);
             await _dbContext.Products.AddAsync(dbProduct);
             await _dbContext.SaveChangesAsync();
+            await _storeDbContext.StoreProducts.AddAsync(storeDbProduct);
+            await _storeDbContext.SaveChangesAsync();
             return _mapper.Map<Product>(dbProduct);
         }
 
@@ -75,8 +79,11 @@ namespace PIMServer.Infrastructure.Repositories
 
             // Update product
             _dbContext.Products.Update(dbProduct);
+            var storeDbProduct = _mapper.Map<Entities.StoreProduct>(dbProduct);
+            await _storeDbContext.StoreProducts.AddAsync(storeDbProduct);
             //Commit
             await _dbContext.SaveChangesAsync();
+            await _storeDbContext.SaveChangesAsync();
             return new { message = "Update success!", product = dbProduct };
         }
     }
