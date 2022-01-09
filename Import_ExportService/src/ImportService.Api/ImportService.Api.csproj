@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>874b2b5f-c35a-43ae-b14f-4af9e1ea8a78</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.15.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Middlewares\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChannelService.Core\ImportService.Core.csproj" />
+    <ProjectReference Include="..\ChannelService.Infrastructure\ImportService.Infrastructure.csproj" />
+    <ProjectReference Include="..\ImportService.Core\ImportService.Core.csproj" />
+    <ProjectReference Include="..\ImportService.Infrastructure\ImportService.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
