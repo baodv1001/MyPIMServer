@@ -11,6 +11,7 @@ namespace PIMServer.Core.Interfaces.Repositories
     {
         Task<IEnumerable<Product>> GetAllProducts();
         Task<Product> GetProductById(Guid id);
+        Task<IEnumerable<Product>> GetProductByCategory(string category);
         Task<Product> CreateProduct(Product product);
         Task<Object> UpdateProduct(Product product, Guid id);
         Task<bool> DeleteProduct(Guid id);

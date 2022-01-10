@@ -52,6 +52,17 @@ namespace PIMServer.Infrastructure.Repositories
             return null;
         }
 
+        public async Task<IEnumerable<Core.Models.Product>> GetProductByCategory(string category)
+        {
+            // category will be lazy init
+            var products = await _dbContext.Products.Where(x=> x.Category.Name==category).ToListAsync().ConfigureAwait(false);
+            if (products != null)
+            {
+                return _mapper.Map<IEnumerable<Core.Models.Product>>(products);
+            }
+            return null;
+        }
+
         public async Task<Core.Models.Product> GetProductById(Guid id)
         {
             var product = await _dbContext.Products.FindAsync(id);

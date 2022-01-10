@@ -11,10 +11,10 @@ namespace PIMServer.Infrastructure.Entities
     {
         public Guid IdProduct { get; set; }
         [ForeignKey("Id")]
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
         public Guid IdAttribute { get; set; }
         [ForeignKey("Id")]
-        public Attribute Attribute { get; set; }
+        public virtual Attribute Attribute { get; set; }
 
     }
 }

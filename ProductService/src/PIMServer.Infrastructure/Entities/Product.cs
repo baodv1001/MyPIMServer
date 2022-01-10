@@ -20,7 +20,7 @@ namespace PIMServer.Infrastructure.Entities
         public DateTime UpdatedAt { get; set; }
         [ForeignKey("Id")]
         public Guid IdCategory { get; set; }
-        public Category Category { get; set; }
-        public IList<Attribute_Product> Attribute_Products { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual IList<Attribute_Product> Attribute_Products { get; set; }
     }
 }

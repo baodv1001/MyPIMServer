@@ -64,6 +64,19 @@ namespace PIMServer.Core.Services
             }
         }
 
+        public async Task<IEnumerable<Product>> GetProductByCategory(string category)
+        {
+            try
+            {
+                return await _productRepository.GetProductByCategory(category);
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError($"Error while trying to call Get Products by category in service class, Error Message = {ex}.");
+                throw;
+            }
+        }
+
         public async Task<Product> GetProductById(Guid id)
         {
             try
